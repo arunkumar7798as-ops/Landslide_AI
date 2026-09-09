@@ -1943,7 +1943,7 @@ function updateAlert(
    PYTHON ML BACKEND CONNECTION
 ===================================================== */
 
-const ML_API_URL = "http://172.16.6.233:5000/predict";
+const ML_API_URL = "https://landslide-ai.onrender.com/predict";
 
 async function runDemoPrediction() {
 
