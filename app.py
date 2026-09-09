@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load trained ML model
-model = joblib.load("../ml_modal/landslide_model.pkl")
+model = joblib.load("landslide_model.pkl")
 
 
 # ==========================================
