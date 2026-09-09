@@ -1,0 +1,1354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #071015;
+
+    color: #e8f7fa;
+
+}
+
+
+/* =================================================
+   APP
+================================================= */
+
+.app {
+
+    min-height: 100vh;
+
+}
+
+
+/* =================================================
+   SIDEBAR
+================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 245px;
+
+    height: 100vh;
+
+    padding: 22px 15px;
+
+    background: #09151b;
+
+    border-right: 1px solid #16333c;
+
+    z-index: 1000;
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.logo-icon {
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 2px solid #00e5ff;
+
+    border-radius: 10px;
+
+    color: #00e5ff;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+}
+
+
+.logo h2 {
+
+    color: #00e5ff;
+
+}
+
+
+.logo span {
+
+    color: #718b94;
+
+    font-size: 9px;
+
+}
+
+
+nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.nav-item {
+
+    width: 100%;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #789099;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: .25s;
+
+}
+
+
+.nav-item:hover,
+.nav-item.active {
+
+    background: #0d2b34;
+
+    color: #00e5ff;
+
+}
+
+
+.system-box {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 18px;
+
+    right: 18px;
+
+    background: #0c2027;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+}
+
+
+.system-box small {
+
+    display: block;
+
+    color: #718b94;
+
+    margin-top: 4px;
+
+}
+
+
+.online-dot,
+.live-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    background: #00ff91;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    box-shadow: 0 0 12px #00ff91;
+
+}
+
+
+/* =================================================
+   MAIN
+================================================= */
+
+.main {
+
+    margin-left: 245px;
+
+    width: calc(100% - 245px);
+
+    padding: 25px;
+
+}
+
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid #15323a;
+
+    padding-bottom: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.topbar h1 {
+
+    font-size: 22px;
+
+    color: #00e5ff;
+
+}
+
+
+.topbar p {
+
+    color: #6d858d;
+
+    margin-top: 5px;
+
+}
+
+
+.top-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #00ff91;
+
+}
+
+
+/* =================================================
+   VIEWS
+================================================= */
+
+.view {
+
+    display: none;
+
+    animation: fade .25s ease;
+
+}
+
+
+.active-view {
+
+    display: block;
+
+}
+
+
+@keyframes fade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =================================================
+   PAGE TITLE
+================================================= */
+
+.page-title {
+
+    margin-bottom: 20px;
+
+}
+
+
+.page-title h2 {
+
+    font-size: 25px;
+
+}
+
+
+.page-title p {
+
+    color: #71878e;
+
+    margin-top: 5px;
+
+}
+
+
+/* =================================================
+   STATS
+================================================= */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.stat-card {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+}
+
+
+.stat-card span {
+
+    color: #6e858d;
+
+    font-size: 11px;
+
+}
+
+
+.stat-card h2 {
+
+    margin: 10px 0;
+
+    font-size: 25px;
+
+    color: #00e5ff;
+
+}
+
+
+.stat-card small {
+
+    color: #70868f;
+
+}
+
+
+/* =================================================
+   DASHBOARD GRID
+================================================= */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+/* =================================================
+   PANEL
+================================================= */
+
+.panel {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 18px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.panel-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.panel-header h3,
+.panel h3 {
+
+    color: #d9f7fa;
+
+}
+
+
+.panel-header p {
+
+    color: #70878f;
+
+    font-size: 12px;
+
+    margin-top: 4px;
+
+}
+
+
+/* =================================================
+   MAP
+================================================= */
+
+#map {
+
+    height: 480px;
+
+    border-radius: 10px;
+
+}
+
+
+#bigMap {
+
+    height: 650px;
+
+    border-radius: 10px;
+
+}
+
+
+#routeMap {
+
+    height: 550px;
+
+    border-radius: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+/* =================================================
+   LEGEND
+================================================= */
+
+.legend {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    font-size: 10px;
+
+}
+
+
+.legend span {
+
+    display: flex;
+
+    gap: 4px;
+
+    align-items: center;
+
+}
+
+
+.legend i {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+}
+
+
+.danger {
+
+    background: #ff304f;
+
+}
+
+
+.warning {
+
+    background: #ff9800;
+
+}
+
+
+.watch {
+
+    background: #ffe600;
+
+}
+
+
+.safe {
+
+    background: #00e676;
+
+}
+
+
+/* =================================================
+   RISK RING
+================================================= */
+
+.risk-ring {
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    border: 12px solid #17353e;
+
+    margin: 30px auto;
+
+    display: grid;
+
+    place-items: center;
+
+}
+
+
+.risk-ring div {
+
+    text-align: center;
+
+}
+
+
+.risk-ring strong {
+
+    display: block;
+
+    font-size: 38px;
+
+    color: #00e5ff;
+
+}
+
+
+.risk-ring span {
+
+    font-size: 10px;
+
+    color: #71888f;
+
+}
+
+
+/* =================================================
+   FACTORS
+================================================= */
+
+.factor {
+
+    margin-bottom: 18px;
+
+}
+
+
+.factor > div:first-child {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+}
+
+
+.factor span {
+
+    color: #83989e;
+
+    font-size: 12px;
+
+}
+
+
+.factor b {
+
+    color: #00e5ff;
+
+}
+
+
+.bar {
+
+    height: 6px;
+
+    background: #122b32;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.bar i {
+
+    display: block;
+
+    height: 100%;
+
+    width: 0%;
+
+    background: #00e5ff;
+
+}
+
+
+/* =================================================
+   MAP INFO
+================================================= */
+
+.map-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.map-info > div {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+}
+
+
+.map-info span {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #00e5ff;
+
+    font-weight: bold;
+
+}
+
+
+.map-info small {
+
+    color: #71878e;
+
+}
+
+
+/* =================================================
+   SENSORS
+================================================= */
+
+.sensor-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.sensor-card {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+}
+
+
+.sensor-card span {
+
+    color: #6e858d;
+
+    font-size: 11px;
+
+}
+
+
+.sensor-card strong {
+
+    display: block;
+
+    font-size: 30px;
+
+    color: #00e5ff;
+
+    margin: 12px 0 3px;
+
+}
+
+
+.sensor-card small {
+
+    color: #72878d;
+
+}
+
+
+.sensor-card label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    color: #00ff91;
+
+    font-size: 10px;
+
+}
+
+
+/* =================================================
+   EMPTY
+================================================= */
+
+.empty {
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #657c83;
+
+    border: 1px dashed #20434b;
+
+    border-radius: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+/* =================================================
+   PREDICTION
+================================================= */
+
+.prediction-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.prediction-card {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+}
+
+
+.prediction-card span {
+
+    color: #6e858d;
+
+    font-size: 11px;
+
+}
+
+
+.prediction-card strong {
+
+    display: block;
+
+    font-size: 35px;
+
+    color: #00e5ff;
+
+    margin: 12px 0;
+
+}
+
+
+.prediction-card small {
+
+    color: #72878d;
+
+}
+
+
+.prediction-message {
+
+    padding: 20px;
+
+    margin-top: 15px;
+
+    background: #08171d;
+
+    border-radius: 10px;
+
+    color: #9db2b8;
+
+}
+
+
+.prediction-timeline {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+}
+
+
+.prediction-timeline div {
+
+    background: #08171d;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+}
+
+
+.prediction-timeline b {
+
+    display: block;
+
+    color: #6e858d;
+
+    font-size: 11px;
+
+}
+
+
+.prediction-timeline span {
+
+    display: block;
+
+    color: #00e5ff;
+
+    font-size: 25px;
+
+    margin-top: 10px;
+
+}
+
+
+.note {
+
+    color: #667d84;
+
+    font-size: 11px;
+
+    margin-top: 20px;
+
+}
+
+
+/* =================================================
+   ALERTS
+================================================= */
+
+.alert-status {
+
+    background: #101b20;
+
+    border: 1px solid #263a40;
+
+    padding: 22px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+.alert-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.alert-main > span {
+
+    font-size: 35px;
+
+}
+
+
+.alert-main h2 {
+
+    color: #00e5ff;
+
+}
+
+
+.alert-main p {
+
+    color: #71878e;
+
+    margin-top: 5px;
+
+}
+
+
+.notification-status {
+
+    color: #82979d;
+
+}
+
+
+.notification-status b {
+
+    color: #00ff91;
+
+    margin-left: 5px;
+
+}
+
+
+.notification-panel button {
+
+    margin-top: 15px;
+
+    padding: 12px 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #23373d;
+
+    color: #758990;
+
+}
+
+
+/* =================================================
+   SAFE ROUTES
+================================================= */
+
+.route-controls {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr auto;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.route-controls label {
+
+    display: block;
+
+    color: #71878e;
+
+    font-size: 10px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.route-controls input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    background: #07151b;
+
+    border: 1px solid #20434b;
+
+    border-radius: 8px;
+
+    color: white;
+
+    outline: none;
+
+}
+
+
+.route-controls input:focus {
+
+    border-color: #00e5ff;
+
+}
+
+
+.route-controls button {
+
+    align-self: end;
+
+    padding: 13px 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #00e676;
+
+    color: #00150b;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.route-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.route-card {
+
+    background: #0b1b21;
+
+    border: 1px solid #15343c;
+
+    border-radius: 13px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.route-icon {
+
+    font-size: 30px;
+
+}
+
+
+.route-card h3 {
+
+    margin-bottom: 5px;
+
+}
+
+
+.route-card p {
+
+    color: #71878e;
+
+    font-size: 12px;
+
+}
+
+
+/* =================================================
+   FOOTER
+================================================= */
+
+footer {
+
+    text-align: center;
+
+    color: #526970;
+
+    font-size: 10px;
+
+    padding: 30px;
+
+}
+
+
+footer span {
+
+    margin: 0 5px;
+
+}
+
+
+/* =================================================
+   MOBILE
+================================================= */
+
+@media(max-width: 900px) {
+
+    .sidebar {
+
+        width: 70px;
+
+        padding: 15px 8px;
+
+    }
+
+
+    .logo-text,
+    .nav-item span,
+    .system-box div {
+
+        display: none;
+
+    }
+
+
+    .logo {
+
+        justify-content: center;
+
+    }
+
+
+    .nav-item {
+
+        text-align: center;
+
+        font-size: 18px;
+
+    }
+
+
+    .main {
+
+        margin-left: 70px;
+
+        width: calc(100% - 70px);
+
+        padding: 15px;
+
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .sensor-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    .topbar {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+
+    .stats-grid,
+    .sensor-grid,
+    .prediction-grid,
+    .route-grid,
+    .map-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .route-controls {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    #map {
+
+        height: 400px;
+
+    }
+
+
+    #bigMap {
+
+        height: 450px;
+
+    }
+
+
+    #routeMap {
+
+        height: 400px;
+
+    }
+
+
+    .prediction-timeline {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .alert-status {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+    }
+
+}

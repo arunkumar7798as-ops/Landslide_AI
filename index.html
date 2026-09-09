@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        NER-X | AI Landslide Command Center
+    </title>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet"
+          href="./s tyle.css">
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                N
+            </div>
+
+            <div class="logo-text">
+
+                <h2>NER-X</h2>
+
+                <span>
+                    LANDSLIDE AI
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="nav-item active"
+                    data-view="dashboard">
+
+                🏠
+                <span>Dashboard</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                    data-view="riskmap">
+
+                🗺️
+                <span>Risk Map</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                    data-view="sensors">
+
+                📡
+                <span>Live Sensors</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                    data-view="prediction">
+
+                🤖
+                <span>AI Prediction</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                    data-view="alerts">
+
+                🚨
+                <span>Emergency Alerts</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                    data-view="routes">
+
+                🛣️
+                <span>Safe Routes</span>
+
+            </button>
+
+        </nav>
+
+
+        <div class="system-box">
+
+            <span class="online-dot"></span>
+
+            <div>
+
+                <b>System Online</b>
+
+                <small>
+                    Monitoring NER
+                </small>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    AI LANDSLIDE COMMAND CENTER
+                </h1>
+
+                <p>
+                    North Eastern Region •
+                    Real-Time Monitoring
+                </p>
+
+            </div>
+
+
+            <div class="top-status">
+
+                <span class="live-dot"></span>
+
+                LIVE
+
+                <span id="clock">
+                    --:--:--
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section id="dashboard"
+                 class="view active-view">
+
+
+            <div class="page-title">
+
+                <h2>
+                    Dashboard Overview
+                </h2>
+
+                <p>
+                    Current landslide risk situation
+                    across the North Eastern Region
+                </p>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <span>
+                        HIGHEST RISK ZONE
+                    </span>
+
+                    <h2 id="highestZone">
+                        WAITING
+                    </h2>
+
+                    <small id="highestZoneStatus">
+                        No live sensor data
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <span>
+                        RISK SCORE
+                    </span>
+
+                    <h2 id="riskScore">
+                        --
+                    </h2>
+
+                    <small>
+                        0 – 100
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <span>
+                        ACTIVE SENSORS
+                    </span>
+
+                    <h2 id="activeSensors">
+                        0
+                    </h2>
+
+                    <small id="sensorStatus">
+                        Waiting for data
+                    </small>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <span>
+                        LAST UPDATE
+                    </span>
+
+                    <h2 id="lastUpdate">
+                        --
+                    </h2>
+
+                    <small>
+                        Sensor timestamp
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAP + ANALYSIS -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- MAP -->
+
+                <div class="panel map-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                NER RISK MAP
+                            </h3>
+
+                            <p>
+                                Sensor-based road risk
+                                visualization
+                            </p>
+
+                        </div>
+
+
+                        <div class="legend">
+
+                            <span>
+                                <i class="danger"></i>
+                                Danger
+                            </span>
+
+                            <span>
+                                <i class="warning"></i>
+                                Warning
+                            </span>
+
+                            <span>
+                                <i class="watch"></i>
+                                Watch
+                            </span>
+
+                            <span>
+                                <i class="safe"></i>
+                                Safe Route
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="map"></div>
+
+                </div>
+
+
+
+                <!-- RISK ANALYSIS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                RISK ANALYSIS
+                            </h3>
+
+                            <p>
+                                Current sensor factors
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="risk-ring">
+
+                        <div>
+
+                            <strong id="riskRingValue">
+                                --
+                            </strong>
+
+                            <span>
+                                RISK
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="factors">
+
+
+                        <div class="factor">
+
+                            <div>
+
+                                <span>
+                                    Rainfall
+                                </span>
+
+                                <b id="rainValue">
+                                    --
+                                </b>
+
+                            </div>
+
+                            <div class="bar">
+
+                                <i id="rainBar"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="factor">
+
+                            <div>
+
+                                <span>
+                                    Soil Moisture
+                                </span>
+
+                                <b id="soilValue">
+                                    --
+                                </b>
+
+                            </div>
+
+                            <div class="bar">
+
+                                <i id="soilBar"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="factor">
+
+                            <div>
+
+                                <span>
+                                    Slope / Tilt
+                                </span>
+
+                                <b id="tiltValue">
+                                    --
+                                </b>
+
+                            </div>
+
+                            <div class="bar">
+
+                                <i id="tiltBar"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="factor">
+
+                            <div>
+
+                                <span>
+                                    Ground Motion
+                                </span>
+
+                                <b id="motionValue">
+                                    --
+                                </b>
+
+                            </div>
+
+                            <div class="bar">
+
+                                <i id="motionBar"></i>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RISK MAP
+        ================================================== -->
+
+        <section id="riskmap"
+                 class="view">
+
+            <div class="page-title">
+
+                <h2>
+                    Risk Map
+                </h2>
+
+                <p>
+                    Real sensor location and road risk
+                </p>
+
+            </div>
+
+
+            <div class="map-info">
+
+
+                <div>
+
+                    <span id="mapRisk">
+                        --
+                    </span>
+
+                    <small>
+                        Risk Score
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span id="mapSensors">
+                        0
+                    </span>
+
+                    <small>
+                        Sensor Locations
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span id="riskDistance">
+                        --
+                    </span>
+
+                    <small>
+                        Risk Distance
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div id="bigMap"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LIVE SENSORS
+        ================================================== -->
+
+        <section id="sensors"
+                 class="view">
+
+
+            <div class="page-title">
+
+                <h2>
+                    Live Sensor Monitoring
+                </h2>
+
+                <p>
+                    Real hardware sensor readings
+                </p>
+
+            </div>
+
+
+            <div class="sensor-grid">
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        🌧️ RAINFALL
+                    </span>
+
+                    <strong id="sensorRain">
+                        --
+                    </strong>
+
+                    <small>
+                        mm/hr
+                    </small>
+
+                    <label id="rainHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        🌱 SOIL MOISTURE
+                    </span>
+
+                    <strong id="sensorSoil">
+                        --
+                    </strong>
+
+                    <small>
+                        %
+                    </small>
+
+                    <label id="soilHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        📐 SLOPE / TILT
+                    </span>
+
+                    <strong id="sensorTilt">
+                        --
+                    </strong>
+
+                    <small>
+                        degrees
+                    </small>
+
+                    <label id="tiltHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        〰️ GROUND MOTION
+                    </span>
+
+                    <strong id="sensorMotion">
+                        --
+                    </strong>
+
+                    <small>
+                        mm
+                    </small>
+
+                    <label id="motionHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        🌡️ TEMPERATURE
+                    </span>
+
+                    <strong id="sensorTemp">
+                        --
+                    </strong>
+
+                    <small>
+                        °C
+                    </small>
+
+                    <label id="tempHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+
+
+                <div class="sensor-card">
+
+                    <span>
+                        💧 HUMIDITY
+                    </span>
+
+                    <strong id="sensorHumidity">
+                        --
+                    </strong>
+
+                    <small>
+                        %
+                    </small>
+
+                    <label id="humidityHealth">
+                        WAITING
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    CONNECTED SENSOR NODES
+                </h3>
+
+                <div id="sensorTable"
+                     class="sensor-table">
+
+                    <div class="empty">
+                        WAITING FOR REAL SENSOR DATA...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AI PREDICTION
+        ================================================== -->
+
+        <section id="prediction"
+                 class="view">
+
+
+            <div class="page-title">
+
+                <h2>
+                    AI Prediction
+                </h2>
+
+                <p>
+                    Future landslide risk assessment
+                </p>
+
+            </div>
+
+
+            <div class="prediction-grid">
+
+
+                <div class="prediction-card">
+
+                    <span>
+                        1 HOUR
+                    </span>
+
+                    <strong id="pred1">
+                        --
+                    </strong>
+
+                    <small>
+                        Predicted risk
+                    </small>
+
+                </div>
+
+
+
+                <div class="prediction-card">
+
+                    <span>
+                        3 HOURS
+                    </span>
+
+                    <strong id="pred3">
+                        --
+                    </strong>
+
+                    <small>
+                        Predicted risk
+                    </small>
+
+                </div>
+
+
+
+                <div class="prediction-card">
+
+                    <span>
+                        6 HOURS
+                    </span>
+
+                    <strong id="pred6">
+                        --
+                    </strong>
+
+                    <small>
+                        Predicted risk
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    AI ANALYSIS
+                </h3>
+
+
+                <div id="predictionMessage"
+                     class="prediction-message">
+
+                    Waiting for AI/ML prediction data.
+
+                </div>
+
+
+                <div class="prediction-timeline">
+
+
+                    <div>
+
+                        <b>
+                            NOW
+                        </b>
+
+                        <span id="nowRisk">
+                            --
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <b>
+                            +1H
+                        </b>
+
+                        <span id="time1">
+                            --
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <b>
+                            +3H
+                        </b>
+
+                        <span id="time3">
+                            --
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <b>
+                            +6H
+                        </b>
+
+                        <span id="time6">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p class="note">
+
+                    Prediction values are displayed only
+                    when supplied by the connected AI/ML
+                    backend.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EMERGENCY ALERTS
+        ================================================== -->
+
+        <section id="alerts"
+                 class="view">
+
+
+            <div class="page-title">
+
+                <h2>
+                    Emergency Alerts
+                </h2>
+
+                <p>
+                    Risk alert and notification management
+                </p>
+
+            </div>
+
+
+            <div class="alert-status">
+
+
+                <div class="alert-main">
+
+                    <span>
+                        🚨
+                    </span>
+
+                    <div>
+
+                        <h2 id="alertLevel">
+                            NO ACTIVE ALERT
+                        </h2>
+
+                        <p id="alertMessage">
+                            Waiting for real sensor event.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="notification-status">
+
+                    <span class="online-dot"></span>
+
+                    Notification Service
+
+                    <b>
+                        READY
+                    </b>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    ALERT TIMELINE
+                </h3>
+
+
+                <div id="alertTimeline">
+
+                    <div class="empty">
+
+                        No emergency events recorded.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel notification-panel">
+
+                <h3>
+                    PUBLIC NOTIFICATION
+                </h3>
+
+                <p>
+
+                    Connected notification service can
+                    notify registered/subscribed users
+                    when a verified emergency event occurs.
+
+                </p>
+
+
+                <button id="alertButton"
+                        disabled>
+
+                    SEND EMERGENCY ALERT
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SAFE ROUTES
+        ================================================== -->
+
+        <section id="routes"
+                 class="view">
+
+
+            <div class="page-title">
+
+                <h2>
+                    Safe Routes
+                </h2>
+
+                <p>
+                    Alternative route avoiding detected
+                    high-risk road sections
+                </p>
+
+            </div>
+
+
+            <div class="route-controls">
+
+
+                <div>
+
+                    <label>
+                        START LOCATION
+                    </label>
+
+                    <input
+                        id="startLocation"
+                        type="text"
+                        placeholder="Example: Guwahati">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                        DESTINATION
+                    </label>
+
+                    <input
+                        id="destination"
+                        type="text"
+                        placeholder="Example: Shillong">
+
+                </div>
+
+
+                <button id="findRouteButton">
+
+                    FIND SAFE ROUTE
+
+                </button>
+
+            </div>
+
+
+            <div id="routeResult"
+                 class="route-result">
+
+                Enter start and destination.
+
+            </div>
+
+
+            <div class="route-grid">
+
+
+                <div class="route-card">
+
+                    <div class="route-icon">
+                        🟢
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Route A
+                        </h3>
+
+                        <p id="routeA">
+                            No route selected.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="route-card">
+
+                    <div class="route-icon">
+                        🟢
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Route B
+                        </h3>
+
+                        <p id="routeB">
+                            Alternative route unavailable.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    ROUTE MAP
+                </h3>
+
+                <div id="routeMap"></div>
+
+                <p class="note">
+
+                    🟢 Green line represents only the
+                    selected alternative route.
+                    Other normal roads remain in their
+                    normal map appearance.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <footer>
+
+            NER-X AI LANDSLIDE EARLY WARNING SYSTEM
+
+            <span>•</span>
+
+            Real Sensor Monitoring
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<!-- Leaflet -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- Our JS -->
+
+<script src="./script.js">
+</script>
+
+
+</body>
+
+</html>
